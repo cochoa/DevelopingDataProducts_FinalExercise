@@ -14,9 +14,10 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Data for this exercise has been collected through two different sources:
 
-- GDP per capita: 
 - % of smokers per country: [Statista](https://www.statista.com/statistics/433390/individuals-who-currently-smoke-cigarettes-in-european-countries/)
-- % of religious population per country:
+- GDP per capita: [Wikipedia](https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(PPP)_per_capita)
+- % of religious population per country: [Wikipedia](https://en.wikipedia.org/wiki/Religions_by_country)
+- Latitude/Longitude of European countries: [Google Public data](https://developers.google.com/public-data/docs/canonical/countries_csv)
 
 The three sources have been merged in a single dataset as follows.
 
