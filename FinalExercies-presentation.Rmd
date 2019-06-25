@@ -1,0 +1,76 @@
+---
+title: "Shiny App"
+subtitle: "A view on the european smoking population"
+author: "Carlos Ochoa"
+date: "25th June 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Data sources
+
+Data for this exercise has been collected through two different sources:
+
+- GDP per capita: 
+- % of smokers per country: [Statista](https://www.statista.com/statistics/433390/individuals-who-currently-smoke-cigarettes-in-european-countries/)
+- % of religious population per country:
+
+The three sources have been merged in a single dataset as follows.
+
+## Summary of the dataset
+
+After merging the data sources, the resulting dataset is:
+
+```{r}
+    data_raw<-read.csv("data.csv",sep=";", encoding = "UTF-8")
+    names(data_raw)[1]<-"country"
+    str(data_raw)
+```
+
+## The tool
+
+The tool allows the following features:
+
+- Select which predictors must be used in the analysis (multiple selection)
+- Normalization of the data
+- 3 different models can be fitted to the data: a lineal model, a tree model and a random forest model. A summary of each model is shown (optional).
+- Each predictor is plotted against the explained variable (%smokers) with the possibility of drawing an indivdual lineal model for each plot.
+- A map is also shown (optional) with each country and the% of smokers. 
+
+## Example
+
+An example of the plots presented by the tool
+
+```{r echo=FALSE, warning=FALSE}
+library(ggplot2)
+library(gridExtra)
+
+p1<-qplot(
+  x=data_raw$lat,
+  y=data_raw$smokers,
+  xlab="Latitude",
+  ylab="% Smokers"
+) + stat_smooth(method="lm", se=T)
+
+p2<-qplot(
+  x=data_raw$lng,
+  y=data_raw$smokers,
+  xlab="Longitude",
+  ylab="% Smokers"
+) + stat_smooth(method="lm", se=T)
+
+p3<-qplot(
+  x=data_raw$gdp_capita,
+  y=data_raw$smokers,
+  xlab="GDP epr capita",
+  ylab="% Smokers"
+) + stat_smooth(method="lm", se=T)
+
+grid.arrange(p1, p2, p3,nrow = 1)
+          
+```
+
+## Thank you!
