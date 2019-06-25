@@ -24,7 +24,7 @@ rsq <- function (x, y) cor(x, y) ^ 2
 shinyServer(function(input, output) {
     
     #Read data
-    data_raw<-read.csv("../data.csv",sep=";", encoding = "UTF-8")
+    data_raw<-read.csv("data.csv",sep=";", encoding = "UTF-8")
     names(data_raw)[1]<-"country"
     predictors<-data_raw[,2:12]
     country<-data_raw[,1]

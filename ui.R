@@ -12,7 +12,7 @@ library(shinyjs)
 library(leaflet)
 
 #Read data
-data<-read.csv("../data.csv",sep=";", encoding = "UTF-8")
+data<-read.csv("data.csv",sep=";", encoding = "UTF-8")
 names(data)[1]<-"country"
 predictors<-data[,2:12]
 country<-data[,1]
